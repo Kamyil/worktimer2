@@ -21,6 +21,8 @@ const l = [
   "/android-chrome-384x384.png",
   "/apple-touch-icon.png",
   "/browserconfig.xml",
+  "/favicon-16x16.png",
+  "/favicon-32x32.png",
   "/favicon.ico",
   "/favicon.png",
   "/manifest.json",
@@ -28,7 +30,7 @@ const l = [
   "/robots.txt",
   "/safari-pinned-tab.svg",
   "/site.webmanifest"
-], o = "1680130442389", a = self, i = `cache${o}`, p = l.concat(m), h = new Set(p);
+], o = "1680129848913", a = self, i = `cache${o}`, p = l.concat(m), h = new Set(p);
 a.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(i).then((s) => s.addAll(p)).then(() => {

@@ -23,8 +23,6 @@ export const files = [
 	"/android-chrome-384x384.png",
 	"/apple-touch-icon.png",
 	"/browserconfig.xml",
-	"/favicon-16x16.png",
-	"/favicon-32x32.png",
 	"/favicon.ico",
 	"/favicon.png",
 	"/manifest.json",
@@ -38,4 +36,4 @@ export const prerendered = [
 	"/"
 ];
 
-export const version = "1680129848913";
+export const version = "1680130442389";

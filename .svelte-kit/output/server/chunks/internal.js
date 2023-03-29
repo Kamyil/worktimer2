@@ -94,7 +94,7 @@ ${``}`;
   } while (!$$settled);
   return $$rendered;
 });
-set_version("1680129848913");
+set_version("1680130442389");
 const options = {
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,
@@ -105,7 +105,7 @@ const options = {
   root: Root,
   service_worker: true,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="apple-touch-icon" sizes="180x180" href="' + assets2 + '/apple-touch-icon.png" />\n		<link\n			rel="icon"\n			type="image/png"\n			sizes="32x32"\n			color="#5bbad5"\n			href="' + assets2 + '/favicon-32x32.png"\n		/>\n		<link\n			rel="icon"\n			type="image/png"\n			sizes="16x16"\n			color="#5bbad5"\n			href="' + assets2 + '/favicon-16x16.png"\n		/>\n		<link rel="manifest" href="' + assets2 + '/site.webmanifest" />\n		<link rel="mask-icon" href="' + assets2 + '/safari-pinned-tab.svg" color="#5bbad5" />\n		<meta name="msapplication-TileColor" content="#da532c" />\n		<meta name="theme-color" content="#5bbad5" />\n		<meta name="viewport" content="width=device-width" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div>' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="apple-touch-icon" sizes="180x180" href="' + assets2 + '/apple-touch-icon.png" />\n		<link\n			rel="icon"\n			type="image/png"\n			sizes="16x16"\n			color="#5bbad5"\n			href="' + assets2 + '/favicon.png"\n		/>\n		<link rel="manifest" href="' + assets2 + '/site.webmanifest" />\n		<link rel="mask-icon" href="' + assets2 + '/safari-pinned-tab.svg" color="#5bbad5" />\n		<meta name="msapplication-TileColor" content="#da532c" />\n		<meta name="theme-color" content="#5bbad5" />\n		<meta name="viewport" content="width=device-width" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div>' + body + "</div>\n	</body>\n</html>\n",
     error: ({ status, message }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
