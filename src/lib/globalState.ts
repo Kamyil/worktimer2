@@ -15,8 +15,6 @@ export interface IGlobalState {
 export const globalState = createGlobalState<IGlobalState>({
 	lastUsedId: 3,
 	work_records: new Map([
-		[1, { start: {hour: 10, minute: 0}, end: {hour: 11, minute: 0}, total_time_spent_in_minutes: 60, name: 'robiłem zupe' }],
-		[2, { start: {hour: 11, minute: 0}, end: {hour: 12, minute: 0}, total_time_spent_in_minutes: 60, name: 'robiłem zupe' }],
-		[3, { start: {hour: 12, minute: 0}, end: {hour: 13, minute: 0}, total_time_spent_in_minutes: 60, name: 'robiłem zupe' }],
+		[1, { start: {hour: 10, minute: 0}, end: {hour: 11, minute: 0}, total_time_spent_in_minutes: 60, name: 'TASK' }],
 	])
 });
