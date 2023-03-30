@@ -1,6 +1,8 @@
 <script lang="ts">
   import { convertMinutesToHoursAndMinutes } from "$lib/actions";
   import { globalState, type IWorkRecord } from "$lib/globalState";
+  import { loadStateFromLocalStorage, saveStateToLocalStorage } from "$lib/localStorage";
+  import StateImportExport from "./StateImportExport.svelte";
 
   $: summedWorkRecords = [...$globalState.work_records.values()].reduce(
     (acc, record) => {
@@ -26,7 +28,7 @@
   );
 </script>
 
-<div class="overflow-y-auto">
+<div class="overflow-y-auto min-h-96">
   <table class="table-compact table">
     <thead>
       <th class="text-center">TASK</th>

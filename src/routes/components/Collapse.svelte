@@ -3,10 +3,11 @@
   export let openedByDefault: boolean = false;
 </script>
 
-<div class="collapse shadow-2xl collapse-arrow bg-base-100 rounded-box">
-  <input type="checkbox" class="peer" /> 
+<div class="collapse shadow-2xl w-full collapse-arrow bg-base-100 rounded-box"
+  >
+  <input type="checkbox" class="peer" checked={openedByDefault} /> 
   <div class="collapse-title">
-    {title}
+    <h1>{title}</h1>
   </div>
   <div class="collapse-content"> 
     <slot/>

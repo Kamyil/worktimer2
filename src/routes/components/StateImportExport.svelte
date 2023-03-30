@@ -14,7 +14,7 @@
   function exportStateToFile() {
     download(
       JSON.stringify($globalState, replacer),
-      `czas-pracy-${getDate(new Date())}.txt`,
+      `czas-pracy-${new Date()}.txt`,
       "text/plain"
     );
   }
@@ -28,9 +28,9 @@
   }
 </script>
 
-<div class="my-2 flex w-full">
+
   <label for="import-state-data" class="btn-outline btn-sm btn">
-    Import
+    Import danych
     <input
       type="file"
       name=""
@@ -39,5 +39,5 @@
       on:change={handleStateFileUpload}
     />
   </label>
-  <button class="btn-outline btn-sm btn" on:click={exportStateToFile}>Export</button>
-</div>
+  <button class="btn-outline btn-sm btn" on:click={exportStateToFile}>Export danych</button>
+
