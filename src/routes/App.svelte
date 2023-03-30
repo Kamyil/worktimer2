@@ -1,5 +1,33 @@
 <script lang="ts">
+  import { addBreak, addNewWorkRecord } from '$lib/actions';
+  import { onMount } from 'svelte';
 	import MainView from './components/MainView.svelte';
+
+	function registerKeyboardShortcuts() {
+		window.addEventListener('keypress', (event) => {
+			switch(event.key) {
+				case "n":
+				case "N": {
+					addNewWorkRecord(); 
+					break;
+				}
+
+				case "b":
+				case "B": {
+					addBreak();
+					break;
+				}
+
+				default: {
+					return;
+				}
+			}
+		});
+	}
+
+	onMount(() => {
+		registerKeyboardShortcuts();
+	})
 </script>
 
 <div class="app">

@@ -143,10 +143,12 @@ const MainView = create_ssr_component(($$result, $$props, $$bindings, slots) => 
         <div class="${"stats w-full shadow"}"><div class="${"stat flex flex-col items-end"}"><div class="${"stat-title"}">ŁĄCZNIE</div>
             <div class="${"stat-value"}">${escape(totalHoursAndMinutes())}</div>
             </div></div>
-        <div class="${"m-2 flex justify-end"}"><button class="${"btn-outline btn-sm btn mx-2"}">Dodaj wpis
+        <div class="${"m-2 flex justify-end"}"><button class="${"btn-outline btn-sm btn mx-2"}"><kbd class="${"kbd kbd-sm mr-2"}">N</kbd>
+            Dodaj wpis
           </button>
 
-          <button class="${"btn-outline btn-sm btn"}">Dodaj przerwę
+          <button class="${"btn-outline btn-sm btn"}"><kbd class="${"kbd kbd-sm mr-2"}">B</kbd>
+            Dodaj przerwę
           </button></div>`;
       }
     }

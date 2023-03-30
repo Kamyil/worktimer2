@@ -1,6 +1,7 @@
 <script lang="ts">
   import { convertMinutesToHoursAndMinutes, deleteWorkRecord, handleNameInputChange, handleTimeInputChange } from "$lib/actions";
   import { globalState } from "$lib/globalState";
+  import { fly } from 'svelte/transition';
 </script>
 
 
@@ -18,7 +19,7 @@
     </thead>
     <tbody class="h-full mt-52 overflow-y-auto">
       {#each [...$globalState.work_records] as [id, workRecord]}
-        <tr>
+        <tr transition:fly="{{ y: -200, duration: 200 }}">
           <td></td>
           <td class="w-fit">
             <input
