@@ -1,41 +1,40 @@
 <script lang="ts">
-  import { addBreak, addNewWorkRecord } from '$lib/actions';
-  import { onMount } from 'svelte';
-	import MainView from './components/MainView.svelte';
+  import { addBreak, addNewWorkRecord } from "$lib/actions";
+  import MainView from "./components/MainView.svelte";
 
-	function registerKeyboardShortcuts() {
-		window.addEventListener('keypress', (event) => {
-			switch(event.key) {
-				case "n":
-				case "N": {
-					addNewWorkRecord(); 
-					break;
-				}
+  function registerKeyboardShortcuts() {
+    window.addEventListener("keypress", (event) => {
+      switch (event.key) {
+        case "n":
+        case "N": {
+          addNewWorkRecord();
+          break;
+        }
 
-				case "b":
-				case "B": {
-					addBreak();
-					break;
-				}
+        case "b":
+        case "B": {
+          addBreak();
+          break;
+        }
 
-				default: {
-					return;
-				}
-			}
-		});
-	}
+        default: {
+          return;
+        }
+      }
+    });
+  }
 
-	onMount(() => {
-		registerKeyboardShortcuts();
-	})
+  // onMount(() => {
+  // 	registerKeyboardShortcuts();
+  // })
 </script>
 
 <div class="app">
-	<MainView />
+  <MainView />
 </div>
 
 <style>
-	/* @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
 		.app {
 			background-color: black;
 			color: white;
@@ -48,10 +47,10 @@
 			color: #202020;
 		}
 	} */
-	/* Tailwind doesn't allow to set width and height to 100%, so we need to add them here */
-	.app {
-		width: 100%;
-		height: 100vh;
-		background-color: #101010;
-	}
+  /* Tailwind doesn't allow to set width and height to 100%, so we need to add them here */
+  .app {
+    width: 100%;
+    height: 100vh;
+    background-color: #101010;
+  }
 </style>
