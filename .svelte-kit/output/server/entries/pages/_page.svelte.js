@@ -143,11 +143,11 @@ const MainView = create_ssr_component(($$result, $$props, $$bindings, slots) => 
         <div class="${"stats w-full shadow"}"><div class="${"stat flex flex-col items-end"}"><div class="${"stat-title"}">ŁĄCZNIE</div>
             <div class="${"stat-value"}">${escape(totalHoursAndMinutes())}</div>
             </div></div>
-        <div class="${"m-2 flex justify-end"}"><button class="${"btn-outline btn-sm btn mx-2"}"><kbd class="${"kbd kbd-sm mr-2"}">N</kbd>
+        <div class="${"m-2 flex justify-end"}"><button class="${"btn-outline btn-sm btn mx-2"}">
             Dodaj wpis
           </button>
 
-          <button class="${"btn-outline btn-sm btn"}"><kbd class="${"kbd kbd-sm mr-2"}">B</kbd>
+          <button class="${"btn-outline btn-sm btn"}">
             Dodaj przerwę
           </button></div>`;
       }
@@ -156,16 +156,16 @@ const MainView = create_ssr_component(($$result, $$props, $$bindings, slots) => 
 });
 const App_svelte_svelte_type_style_lang = "";
 const css = {
-  code: ".app.svelte-101jdel{width:100%;height:100vh;background-color:#101010}",
+  code: ".app.svelte-1ujs6t1{width:100%;height:100vh;background-color:#101010}",
   map: null
 };
 const App = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$result.css.add(css);
-  return `<div class="${"app svelte-101jdel"}">${validate_component(MainView, "MainView").$$render($$result, {}, {}, {})}
+  return `<div class="${"app svelte-1ujs6t1"}">${validate_component(MainView, "MainView").$$render($$result, {}, {}, {})}
 </div>`;
 });
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `${$$result.head += `<!-- HEAD_svelte-t32ptj_START -->${$$result.title = `<title>Home</title>`, ""}<meta name="${"description"}" content="${"Svelte demo app"}"><!-- HEAD_svelte-t32ptj_END -->`, ""}
+  return `${$$result.head += `<!-- HEAD_svelte-ljkqf0_START -->${$$result.title = `<title>WorkTimer2</title>`, ""}<meta name="${"description"}" content="${"Svelte demo app"}"><!-- HEAD_svelte-ljkqf0_END -->`, ""}
 
 ${validate_component(App, "App").$$render($$result, {}, {}, {})}`;
 });
