@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>WorkTimer2</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
