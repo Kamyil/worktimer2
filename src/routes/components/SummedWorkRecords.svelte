@@ -1,7 +1,10 @@
 <script lang="ts">
   import { convertMinutesToHoursAndMinutes } from "$lib/actions";
   import { globalState, type IWorkRecord } from "$lib/globalState";
-  import { loadStateFromLocalStorage, saveStateToLocalStorage } from "$lib/localStorage";
+  import {
+    loadStateFromLocalStorage,
+    saveStateToLocalStorage,
+  } from "$lib/localStorage";
   import { fly } from "svelte/transition";
   import StateImportExport from "./StateImportExport.svelte";
 
@@ -29,7 +32,7 @@
   );
 </script>
 
-<div class="overflow-y-auto min-h-96">
+<div class="min-h-96 overflow-y-auto">
   <table class="table-compact table">
     <thead>
       <th class="text-center">TASK</th>
@@ -37,7 +40,7 @@
     </thead>
     <tbody>
       {#each [...summedWorkRecords] as [id, workRecord]}
-        <tr transition:fly="{{ y: -200, duration: 200 }}">
+        <tr transition:fly={{ y: -200, duration: 200 }}>
           <td class="text-center">{workRecord.name}</td>
           <td class="text-center">
             {#if workRecord.total_time_spent_in_minutes >= 60}

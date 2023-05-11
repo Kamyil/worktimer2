@@ -3,7 +3,15 @@ import { w as writable } from "../../chunks/index.js";
 const globalState = writable({
   lastUsedId: 3,
   work_records: /* @__PURE__ */ new Map([
-    [1, { start: { hour: 10, minute: 0 }, end: { hour: 11, minute: 0 }, total_time_spent_in_minutes: 60, name: "Good morning :)" }]
+    [
+      1,
+      {
+        start: { hour: 10, minute: 0 },
+        end: { hour: 11, minute: 0 },
+        total_time_spent_in_minutes: 60,
+        name: "Good morning :)"
+      }
+    ]
   ])
 });
 function convertMinutesToHoursAndMinutes(minutes) {
@@ -28,7 +36,7 @@ const Collapse = create_ssr_component(($$result, $$props, $$bindings, slots) => 
     $$bindings.title(title);
   if ($$props.openedByDefault === void 0 && $$bindings.openedByDefault && openedByDefault !== void 0)
     $$bindings.openedByDefault(openedByDefault);
-  return `<div class="${"collapse shadow-2xl w-full collapse-arrow bg-base-100 rounded-box"}"><input type="${"checkbox"}" class="${"peer"}" ${openedByDefault ? "checked" : ""}> 
+  return `<div class="${"collapse-arrow rounded-box collapse w-full bg-base-100 shadow-2xl"}"><input type="${"checkbox"}" class="${"peer"}" ${openedByDefault ? "checked" : ""}>
   <div class="${"collapse-title"}"><h1>${escape(title)}</h1></div>
   <div class="${"collapse-content"}">${slots.default ? slots.default({}) : ``}</div></div>`;
 });
@@ -36,23 +44,23 @@ const EditableWorkRecords = create_ssr_component(($$result, $$props, $$bindings,
   let $globalState, $$unsubscribe_globalState;
   $$unsubscribe_globalState = subscribe(globalState, (value) => $globalState = value);
   $$unsubscribe_globalState();
-  return `<div class="${"overflow-y-auto max-h-[600px]"}"><table class="${"table table-zebra w-full"}"><thead><tr><th></th>
+  return `<div class="${"max-h-[600px] overflow-y-auto"}"><table class="${"table-zebra table w-full"}"><thead><tr><th></th>
         <th class="${"text-center"}">Task</th>
         <th class="${"text-center"}">Start</th>
         <th class="${"text-center"}">Koniec</th>
         <th class="${"text-center"}">Spędzony czas</th>
         <th class="${"text-center"}"></th></tr></thead>
-    <tbody class="${"h-full mt-52 overflow-y-auto"}">${each([...$globalState.work_records], ([id, workRecord]) => {
+    <tbody class="${"mt-52 h-full overflow-y-auto"}">${each([...$globalState.work_records], ([id, workRecord]) => {
     return `<tr><td></td>
-          <td class="${"w-fit"}"><input class="${"w-full input-bordered input input-md text-center"}" type="${"text"}" name="${"work_name"}" id="${"work_name"}"${add_attribute("value", workRecord.name, 0)}></td>
+          <td class="${"w-fit"}"><input class="${"input-bordered input input-md w-full text-center"}" type="${"text"}" name="${"work_name"}" id="${"work_name"}"${add_attribute("value", workRecord.name, 0)}></td>
           <td class="${"w-fit"}"><div class="${"w-full text-center"}"><input class="${"input-bordered input input-md w-20 text-center"}" type="${"number"}"${add_attribute("name", `${id}-start-hour`, 0)}${add_attribute("id", `${id}-start-hour`, 0)} min="${"0"}" max="${"23"}"${add_attribute("value", workRecord.start.hour, 0)}>
-            :
-            <input class="${"input-bordered input input-md w-20 text-center"}" type="${"number"}"${add_attribute("name", `${id}-start-minute`, 0)}${add_attribute("id", `${id}-start-minute`, 0)} min="${"0"}" max="${"59"}"${add_attribute("value", workRecord.start.minute, 0)}>
-          </div></td>
+              :
+              <input class="${"input-bordered input input-md w-20 text-center"}" type="${"number"}"${add_attribute("name", `${id}-start-minute`, 0)}${add_attribute("id", `${id}-start-minute`, 0)} min="${"0"}" max="${"59"}"${add_attribute("value", workRecord.start.minute, 0)}>
+            </div></td>
           <td class="${"w-fit"}"><div class="${"w-full text-center"}"><input class="${"input-bordered input input-md w-20 text-center"}" type="${"number"}"${add_attribute("name", `${id}-end-hour`, 0)}${add_attribute("id", `${id}-end-hour`, 0)} min="${"0"}" max="${"23"}"${add_attribute("value", workRecord.end.hour, 0)}>
-            :
-            <input class="${"input-bordered input input-md w-20 text-center"}" type="${"number"}"${add_attribute("name", `${id}-end-minute`, 0)}${add_attribute("id", `${id}-end-minute`, 0)} min="${"0"}" max="${"59"}"${add_attribute("value", workRecord.end.minute, 0)}>
-          </div></td>
+              :
+              <input class="${"input-bordered input input-md w-20 text-center"}" type="${"number"}"${add_attribute("name", `${id}-end-minute`, 0)}${add_attribute("id", `${id}-end-minute`, 0)} min="${"0"}" max="${"59"}"${add_attribute("value", workRecord.end.minute, 0)}>
+            </div></td>
           <td class="${"text-center text-white"}">${workRecord.total_time_spent_in_minutes >= 60 ? (() => {
       let { hours, minutes } = convertMinutesToHoursAndMinutes(workRecord.total_time_spent_in_minutes);
       return `
@@ -69,13 +77,13 @@ const StateImportExport = create_ssr_component(($$result, $$props, $$bindings, s
   $$unsubscribe_globalState = subscribe(globalState, (value) => value);
   $$unsubscribe_globalState();
   return `<label for="${"import-state-data"}" class="${"btn-outline btn-sm btn"}">Import danych
-    <input type="${"file"}" name="${""}" class="${"hidden"}" id="${"import-state-data"}"></label>
-  <button class="${"btn-outline btn-sm btn"}">Export danych</button>`;
+  <input type="${"file"}" name="${""}" class="${"hidden"}" id="${"import-state-data"}"></label>
+<button class="${"btn-outline btn-sm btn"}">Export danych</button>`;
 });
 const Options = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `<div class="${"flex flex-col"}"><div class="${"shadow m-2"}">${validate_component(StateImportExport, "StateImportExport").$$render($$result, {}, {}, {})}
-      <button class="${"btn-outline btn-sm btn"}">Zapisz do local storage</button>
-      <button class="${"btn-outline btn-sm btn"}">Wczytaj z local storage</button></div></div>`;
+  return `<div class="${"flex flex-col"}"><div class="${"m-2 shadow"}"><button class="${"btn-outline btn-sm btn"}">Zapisz do local storage</button>
+    <button class="${"btn-outline btn-sm btn"}">Wczytaj z local storage</button>
+    ${validate_component(StateImportExport, "StateImportExport").$$render($$result, {}, {}, {})}</div></div>`;
 });
 const SummedWorkRecords = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let summedWorkRecords;
@@ -95,7 +103,7 @@ const SummedWorkRecords = create_ssr_component(($$result, $$props, $$bindings, s
     /* @__PURE__ */ new Map()
   );
   $$unsubscribe_globalState();
-  return `<div class="${"overflow-y-auto min-h-96"}"><table class="${"table-compact table"}"><thead><th class="${"text-center"}">TASK</th>
+  return `<div class="${"min-h-96 overflow-y-auto"}"><table class="${"table-compact table"}"><thead><th class="${"text-center"}">TASK</th>
       <th>CZAS ZSUMOWANY</th></thead>
     <tbody>${each([...summedWorkRecords], ([id, workRecord]) => {
     return `<tr><td class="${"text-center"}">${escape(workRecord.name)}</td>
@@ -123,14 +131,14 @@ const MainView = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   $$unsubscribe_globalState();
   return `<div class="${"mainview flex h-fit w-full items-center justify-center"}"><div class="${"mockup-window border border-zinc-900"}">${validate_component(Options, "Options").$$render($$result, {}, {}, {})}
 
-  <div class="${"flex flex-row-reverse"}"><div class="${"w-3/12"}">${validate_component(Collapse, "Collapse").$$render($$result, { openedByDefault: true, title: "GRUPY" }, {}, {
+    <div class="${"flex flex-row-reverse"}"><div class="${"w-3/12"}">${validate_component(Collapse, "Collapse").$$render($$result, { openedByDefault: true, title: "GRUPY" }, {}, {
     default: () => {
       return `${validate_component(SummedWorkRecords, "SummedWorkRecords").$$render($$result, {}, {}, {})}`;
     }
   })}</div>
 
-    
-    <div class="${"w-9/12"}">${validate_component(Collapse, "Collapse").$$render(
+      
+      <div class="${"w-9/12"}">${validate_component(Collapse, "Collapse").$$render(
     $$result,
     {
       openedByDefault: true,
@@ -140,16 +148,16 @@ const MainView = create_ssr_component(($$result, $$props, $$bindings, slots) => 
     {
       default: () => {
         return `${validate_component(EditableWorkRecords, "EditableWorkRecords").$$render($$result, {}, {}, {})}
-        <div class="${"stats w-full shadow"}"><div class="${"stat flex flex-col items-end"}"><div class="${"stat-title"}">ŁĄCZNIE</div>
-            <div class="${"stat-value"}">${escape(totalHoursAndMinutes())}</div>
-            </div></div>
-        <div class="${"m-2 flex justify-end"}"><button class="${"btn-outline btn-sm btn mx-2"}">
-            Dodaj wpis
-          </button>
+          <div class="${"stats w-full shadow"}"><div class="${"stat flex flex-col items-end"}"><div class="${"stat-title"}">ŁĄCZNIE</div>
+              <div class="${"stat-value"}">${escape(totalHoursAndMinutes())}</div>
+              </div></div>
+          <div class="${"m-2 flex justify-end"}"><button class="${"btn-outline btn-sm btn"}">
+              Dodaj przerwę
+            </button>
 
-          <button class="${"btn-outline btn-sm btn"}">
-            Dodaj przerwę
-          </button></div>`;
+            <button class="${"btn-outline btn-sm btn mx-2"}">
+              Dodaj wpis
+            </button></div>`;
       }
     }
   )}</div></div></div></div>`;
@@ -165,7 +173,7 @@ const App = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 </div>`;
 });
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `${$$result.head += `<!-- HEAD_svelte-ljkqf0_START -->${$$result.title = `<title>WorkTimer2</title>`, ""}<meta name="${"description"}" content="${"Svelte demo app"}"><!-- HEAD_svelte-ljkqf0_END -->`, ""}
+  return `${$$result.head += `<!-- HEAD_svelte-9rh28k_START -->${$$result.title = `<title>WorkTimer2</title>`, ""}<meta name="${"description"}" content="${"Svelte demo app"}"><!-- HEAD_svelte-9rh28k_END -->`, ""}
 
 ${validate_component(App, "App").$$render($$result, {}, {}, {})}`;
 });

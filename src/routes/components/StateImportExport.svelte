@@ -28,16 +28,16 @@
   }
 </script>
 
-
-  <label for="import-state-data" class="btn-outline btn-sm btn">
-    Import danych
-    <input
-      type="file"
-      name=""
-      class="hidden"
-      id="import-state-data"
-      on:change={handleStateFileUpload}
-    />
-  </label>
-  <button class="btn-outline btn-sm btn" on:click={exportStateToFile}>Export danych</button>
-
+<label for="import-state-data" class="btn-outline btn-sm btn">
+  Import danych
+  <input
+    type="file"
+    name=""
+    class="hidden"
+    id="import-state-data"
+    on:change={handleStateFileUpload}
+  />
+</label>
+<button class="btn-outline btn-sm btn" on:click={exportStateToFile}
+  >Export danych</button
+>
