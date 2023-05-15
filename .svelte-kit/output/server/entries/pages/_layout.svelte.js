@@ -4,7 +4,7 @@ const pwaInfo = { "pwaInDevEnvironment": false, "webManifest": { "href": "/manif
 const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let webManifest;
   webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : "";
-  return `${$$result.head += `<!-- HEAD_svelte-hnr6zt_START --><!-- HTML_TAG_START -->${webManifest}<!-- HTML_TAG_END --><!-- HEAD_svelte-hnr6zt_END -->`, ""}
+  return `${$$result.head += `<!-- HEAD_svelte-13srx9e_START --><!-- HTML_TAG_START -->${webManifest}<!-- HTML_TAG_END --><!-- HEAD_svelte-13srx9e_END -->`, ""}
 
 
 ${slots.default ? slots.default({}) : ``}`;

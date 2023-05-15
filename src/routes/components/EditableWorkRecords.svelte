@@ -1,12 +1,16 @@
 <script lang="ts">
-  import { convertMinutesToHoursAndMinutes, deleteWorkRecord, handleNameInputChange, handleTimeInputChange } from "$lib/actions";
+  import {
+    convertMinutesToHoursAndMinutes,
+    deleteWorkRecord,
+    handleNameInputChange,
+    handleTimeInputChange,
+  } from "$lib/actions";
   import { globalState } from "$lib/globalState";
-  import { fly } from 'svelte/transition';
+  import { fly } from "svelte/transition";
 </script>
 
-
-<div class="overflow-y-auto max-h-[600px]">
-  <table class="table table-zebra w-full">
+<div class="max-h-[600px] overflow-y-auto">
+  <table class="table-zebra table w-full">
     <thead>
       <tr>
         <th />
@@ -17,13 +21,13 @@
         <th class="text-center" />
       </tr>
     </thead>
-    <tbody class="h-full mt-52 overflow-y-auto">
+    <tbody class="mt-52 h-full overflow-y-auto">
       {#each [...$globalState.work_records] as [id, workRecord]}
-        <tr transition:fly="{{ y: -200, duration: 200 }}">
-          <td></td>
+        <tr transition:fly={{ y: -200, duration: 200 }}>
+          <td />
           <td class="w-fit">
             <input
-              class="w-full input-bordered input input-md  text-center"
+              class="input-bordered input input-md w-full  text-center"
               type="text"
               name="work_name"
               id="work_name"
@@ -33,57 +37,57 @@
           </td>
           <td class="w-fit">
             <div class="w-full text-center">
-            <input
-              class="input-bordered input input-md w-20 text-center"
-              type="number"
-              name={`${id}-start-hour`}
-              id={`${id}-start-hour`}
-              min="0"
-              max="23"
-              value={workRecord.start.hour}
-              on:input={(event) =>
-                handleTimeInputChange(event, id, "start", "hour")}
-            />
-            :
-            <input
-              class="input-bordered input input-md w-20 text-center"
-              type="number"
-              name={`${id}-start-minute`}
-              id={`${id}-start-minute`}
-              min="0"
-              max="59"
-              value={workRecord.start.minute}
-              on:input={(event) =>
-                handleTimeInputChange(event, id, "start", "minute")}
-            />
-          </div>
+              <input
+                class="input-bordered input input-md w-20 text-center"
+                type="number"
+                name={`${id}-start-hour`}
+                id={`${id}-start-hour`}
+                min="0"
+                max="23"
+                value={workRecord.start.hour}
+                on:input={(event) =>
+                  handleTimeInputChange(event, id, "start", "hour")}
+              />
+              :
+              <input
+                class="input-bordered input input-md w-20 text-center"
+                type="number"
+                name={`${id}-start-minute`}
+                id={`${id}-start-minute`}
+                min="0"
+                max="59"
+                value={workRecord.start.minute}
+                on:input={(event) =>
+                  handleTimeInputChange(event, id, "start", "minute")}
+              />
+            </div>
           </td>
           <td class="w-fit">
             <div class="w-full text-center">
-            <input
-              class="input-bordered input input-md w-20 text-center"
-              type="number"
-              name={`${id}-end-hour`}
-              id={`${id}-end-hour`}
-              min="0"
-              max="23"
-              value={workRecord.end.hour}
-              on:input={(event) =>
-                handleTimeInputChange(event, id, "end", "hour")}
-            />
-            :
-            <input
-              class="input-bordered input input-md w-20 text-center"
-              type="number"
-              name={`${id}-end-minute`}
-              id={`${id}-end-minute`}
-              min="0"
-              max="59"
-              value={workRecord.end.minute}
-              on:input={(event) =>
-                handleTimeInputChange(event, id, "end", "minute")}
-            />
-          </div>
+              <input
+                class="input-bordered input input-md w-20 text-center"
+                type="number"
+                name={`${id}-end-hour`}
+                id={`${id}-end-hour`}
+                min="0"
+                max="23"
+                value={workRecord.end.hour}
+                on:input={(event) =>
+                  handleTimeInputChange(event, id, "end", "hour")}
+              />
+              :
+              <input
+                class="input-bordered input input-md w-20 text-center"
+                type="number"
+                name={`${id}-end-minute`}
+                id={`${id}-end-minute`}
+                min="0"
+                max="59"
+                value={workRecord.end.minute}
+                on:input={(event) =>
+                  handleTimeInputChange(event, id, "end", "minute")}
+              />
+            </div>
           </td>
           <td class="text-center text-white">
             {#if workRecord.total_time_spent_in_minutes >= 60}
