@@ -1,6 +1,7 @@
 <script lang="ts">
   import { convertMinutesToHoursAndMinutes, deleteWorkRecord, handleNameInputChange, handleTimeInputChange } from "$lib/actions";
   import { globalState } from "$lib/globalState";
+  import { saveStateToLocalStorage } from "$lib/localStorage";
   import { fly } from 'svelte/transition';
 </script>
 
@@ -99,7 +100,10 @@
           <td>
             <button
               class="btn-outline btn-xs btn"
-              on:click={() => deleteWorkRecord(id)}>USUŃ</button
+              on:click={() => {
+                deleteWorkRecord(id)
+                saveStateToLocalStorage();
+              }}>USUŃ</button
             >
           </td>
         </tr>

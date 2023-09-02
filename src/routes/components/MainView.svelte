@@ -29,9 +29,6 @@
 </script>
 
 
-
-
-
 <div class="mainview flex h-fit w-full items-center justify-center">
 
   <div class="mockup-window border border-zinc-900">
@@ -56,12 +53,18 @@
           </div>
         </div>
         <div class="m-2 flex justify-end">
-          <button class="btn-outline btn-sm btn mx-2" on:click={addNewWorkRecord}>
+          <button class="btn-outline btn-sm btn mx-2" on:click={() => {
+            addNewWorkRecord();
+            saveStateToLocalStorage();
+          }}>
             <!-- <kbd class="kbd kbd-sm mr-2">N</kbd> -->
             Dodaj wpis
           </button>
 
-          <button class="btn-outline btn-sm btn" on:click={addBreak}>
+          <button class="btn-outline btn-sm btn" on:click={() => {
+            addBreak();
+            saveStateToLocalStorage();
+          }}>
             <!-- <kbd class="kbd kbd-sm mr-2">B</kbd> -->
             Dodaj przerwę
           </button>
