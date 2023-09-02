@@ -1,7 +1,14 @@
 <script lang="ts">
-  import { addBreak, addNewWorkRecord, convertMinutesToHoursAndMinutes } from "$lib/actions";
+  import {
+    addBreak,
+    addNewWorkRecord,
+    convertMinutesToHoursAndMinutes,
+  } from "$lib/actions";
   import { globalState } from "$lib/globalState";
-  import { loadStateFromLocalStorage, saveStateToLocalStorage } from "$lib/localStorage";
+  import {
+    loadStateFromLocalStorage,
+    saveStateToLocalStorage,
+  } from "$lib/localStorage";
   import { onMount } from "svelte";
   import Collapse from "./Collapse.svelte";
   import EditableWorkRecords from "./EditableWorkRecords.svelte";
@@ -28,30 +35,29 @@
   });
 </script>
 
-
 <div class="mainview flex h-fit w-full items-center justify-center">
-
   <div class="mockup-window border border-zinc-900">
-    <Options/>
+    <Options />
 
-  <div class="flex flex-row-reverse">
-    <div class="w-3/12">
-      <Collapse openedByDefault={true} title="GRUPY">
-        <SummedWorkRecords />
-      </Collapse>
-    </div>
+    <div class="flex flex-row-reverse">
+      <div class="w-3/12">
+        <Collapse openedByDefault={true} title="GRUPY">
+          <SummedWorkRecords />
+        </Collapse>
+      </div>
 
-    <!-- Editable work records -->
-    <div class="w-9/12">
-      <Collapse openedByDefault={true} title="POJEDYNCZE">
-        <EditableWorkRecords />
-        <div class="stats w-full shadow">
-          <div class="stat flex flex-col items-end">
-            <div class="stat-title">ŁĄCZNIE</div>
-            <div class="stat-value">{totalHoursAndMinutes()}</div>
-            <!-- <div class="stat-desc">21% more than last month</div> -->
+      <!-- Editable work records -->
+      <div class="w-9/12">
+        <Collapse openedByDefault={true} title="POJEDYNCZE">
+          <EditableWorkRecords />
+          <div class="stats w-full shadow">
+            <div class="stat flex flex-col items-end">
+              <div class="stat-title">ŁĄCZNIE</div>
+              <div class="stat-value">{totalHoursAndMinutes()}</div>
+              <!-- <div class="stat-desc">21% more than last month</div> -->
+            </div>
           </div>
-        </div>
+
         <div class="m-2 flex justify-end">
           <button class="btn-outline btn-sm btn mx-2" on:click={() => {
             addNewWorkRecord();
@@ -72,5 +78,6 @@
       </Collapse>
     </div>
   </div>
-  </div>
 </div>
+</div>
+
