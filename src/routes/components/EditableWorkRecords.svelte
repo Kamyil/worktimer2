@@ -4,6 +4,7 @@
     deleteWorkRecord,
     handleNameInputChange,
     handleTimeInputChange,
+    handleTimeButtonClick,
   } from "$lib/actions";
   import { globalState } from "$lib/globalState";
   import { saveStateToLocalStorage } from "$lib/localStorage";
@@ -61,6 +62,15 @@
                 on:input={(event) =>
                   handleTimeInputChange(event, id, "start", "minute")}
               />
+              <button
+               class="btn-outline btn-xs btn py-1 align-middle"
+               name={`${id}-start-time-button`}
+               id={`${id}-start-time-button`}
+               on:click={(event) => 
+                handleTimeButtonClick(event, id, "start")}
+               >
+               Ustaw obecny czas
+               </button>
             </div>
           </td>
           <td class="w-fit">
@@ -88,6 +98,15 @@
                 on:input={(event) =>
                   handleTimeInputChange(event, id, "end", "minute")}
               />
+                 <button
+               class="btn-outline btn-xs btn py-1 align-middle"
+               name={`${id}-end-time-button`}
+               id={`${id}-end-time-button`}
+               on:click={(event) => 
+                handleTimeButtonClick(event, id, "end")}
+               >
+               Ustaw obecny czas
+               </button>
             </div>
           </td>
           <td class="text-center text-white">

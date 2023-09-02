@@ -48,20 +48,42 @@ export function handleTimeInputChange(
       );
     } else throw Error(`Couldn't find work record with id=${workRecordId}`);
 
-    // Then recalculate total spent minutes on this one task
-    workRecord.total_time_spent_in_minutes = calcTotalTimeSpentForTask({
-      start: workRecord.start,
-      end: workRecord.end,
-    });
-
-    // Then recalculate total spent time this day
-    currentState.work_records.forEach((workRecord) => {
-      newTotalTimeSpentThisDayInMinutes +=
-        workRecord.total_time_spent_in_minutes;
-    });
+    updateTotalTimes(workRecord, currentState);
 
     // Then update whole state
     return currentState;
+  });
+}
+
+export function handleTimeButtonClick(
+  event: Event,
+  workRecordId: number,
+  startOrEnd: "start" | "end"
+) {
+  globalState.update((currentState) => {
+    let workRecord = currentState.work_records.get(workRecordId);
+    if(workRecord){
+      const currentDate = new Date();
+      workRecord[startOrEnd]['hour'] = currentDate.getHours();
+      workRecord[startOrEnd]['minute'] = currentDate.getMinutes();
+      
+      updateTotalTimes(workRecord, currentState);
+    } else throw Error(`Couldn't find work record with id=${workRecordId}`);
+    return currentState;
+  });
+}
+
+export function updateTotalTimes(workRecord, currentState){
+  let newTotalTimeSpentThisDayInMinutes = 0;
+
+  workRecord.total_time_spent_in_minutes = calcTotalTimeSpentForTask({
+    start: workRecord.start,
+    end: workRecord.end,
+  });
+  // Then recalculate total spent time this day
+  currentState.work_records.forEach((workRecord) => {
+    newTotalTimeSpentThisDayInMinutes +=
+      workRecord.total_time_spent_in_minutes;
   });
 }
 
@@ -102,15 +124,19 @@ export function handleNameInputChange(event: Event, workRecordId: number) {
 
 export function addNewWorkRecord() {
   globalState.update((state) => {
+    const startTime = new Date();
+    let endTime = new Date();
+    endTime.setMinutes(startTime.getMinutes() + 15);
+    endTime = new Date(endTime.getTime());
     state.work_records.set(state.lastUsedId + 1, {
       name: "TASK",
       start: {
-        hour: getHours(new Date()),
-        minute: getMinutes(new Date()),
+        hour: startTime.getHours(),
+        minute: startTime.getMinutes(),
       },
       end: {
-        hour: getHours(new Date()),
-        minute: getMinutes(new Date()) + 15,
+        hour: endTime.getHours(),
+        minute: endTime.getMinutes(),
       },
       total_time_spent_in_minutes: 15,
     });
@@ -121,16 +147,20 @@ export function addNewWorkRecord() {
 }
 
 export function addBreak() {
+  const startTime = new Date();
+  let endTime = new Date();
+  endTime.setMinutes(startTime.getMinutes() + 15);
+  endTime = new Date(endTime.getTime());
   globalState.update((state) => {
     state.work_records.set(state.lastUsedId + 1, {
       name: "PRZERWA",
       start: {
-        hour: getHours(new Date()),
-        minute: getMinutes(new Date()),
+        hour: startTime.getHours(),
+        minute: startTime.getMinutes(),
       },
       end: {
-        hour: getHours(new Date()),
-        minute: getMinutes(new Date()) + 15,
+        hour: endTime.getHours(),
+        minute: endTime.getMinutes(),
       },
       total_time_spent_in_minutes: 15,
     });
