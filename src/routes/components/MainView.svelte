@@ -36,7 +36,7 @@
 </script>
 
 <div class="mainview flex h-fit w-full items-center justify-center">
-  <div class="mockup-window border border-zinc-900">
+  <div class="mockup-window border border-zinc-900 w-full mx-5">
     <Options />
 
     <div class="flex flex-row-reverse">

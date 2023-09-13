@@ -32,7 +32,7 @@
   );
 </script>
 
-<div class="min-h-96 overflow-y-auto">
+<div class="min-h-96 overflow-y-auto w-full">
   <table class="table-compact table">
     <thead>
       <th class="text-center">TASK</th>
@@ -41,16 +41,18 @@
     <tbody>
       {#each [...summedWorkRecords] as [id, workRecord]}
         <tr transition:fly={{ y: -200, duration: 200 }}>
-          <td class="text-center">{workRecord.name}</td>
+          <td class="text-center  break-all" style="max-width: 220px;">
+            <div class=" break-all" style="max-width: 210px;">{workRecord.name}</div>
+          </td>
           <td class="text-center">
             {#if workRecord.total_time_spent_in_minutes >= 60}
               {@const { hours, minutes } = convertMinutesToHoursAndMinutes(
                 workRecord.total_time_spent_in_minutes
               )}
 
-              {hours}h {minutes}m
+              <div class="break-all h-fit">{hours}h {minutes}m</div>
             {:else}
-              {workRecord.total_time_spent_in_minutes}m
+              <div class="break-all">{workRecord.total_time_spent_in_minutes}m</div>
             {/if}
           </td>
         </tr>
