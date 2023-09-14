@@ -9,6 +9,8 @@
   import { globalState } from "$lib/globalState";
   import { saveStateToLocalStorage } from "$lib/localStorage";
   import { fly } from 'svelte/transition';
+  import CurrentTimeIcon from "./common/icons/CurrentTimeIcon.svelte";
+  import Tooltip from "./common/Tooltip.svelte";
 </script>
 
 <div class="max-h-[600px] overflow-y-auto">
@@ -63,14 +65,15 @@
                   handleTimeInputChange(event, id, "start", "minute")}
               />
               <button
-               class="btn-outline btn-xs btn py-1 align-middle"
-               name={`${id}-start-time-button`}
-               id={`${id}-start-time-button`}
-               on:click={(event) => 
-                handleTimeButtonClick(event, id, "start")}
+                class="btn-outline btn-xs btn py-1 align-middle fill-amber-400 hover:fill-black mx-2"
+                name={`${id}-start-time-button`}
+                id={`${id}-start-time-button`}
+                on:click={(event) => 
+                  handleTimeButtonClick(event, id, "start")}
                >
-               Ustaw obecny czas
+                <CurrentTimeIcon/>
                </button>
+               <Tooltip targetId={`set-current-time-btn__start-time__${id}`}/>
             </div>
           </td>
           <td class="w-fit">
@@ -99,13 +102,13 @@
                   handleTimeInputChange(event, id, "end", "minute")}
               />
                  <button
-               class="btn-outline btn-xs btn py-1 align-middle"
-               name={`${id}-end-time-button`}
-               id={`${id}-end-time-button`}
-               on:click={(event) => 
-                handleTimeButtonClick(event, id, "end")}
+                    class="btn-outline btn-xs btn py-1 mx-2 align-middle fill-amber-400 hover:fill-black"
+                    name={`${id}-end-time-button`}
+                    id={`${id}-end-time-button`}
+                    on:click={(event) => 
+                      handleTimeButtonClick(event, id, "end")}
                >
-               Ustaw obecny czas
+               <CurrentTimeIcon/>
                </button>
             </div>
           </td>
